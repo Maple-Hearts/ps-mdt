@@ -14,6 +14,13 @@ Config.MugShotWebhook = ''
 -- Command /mdtleaderboard, will display top players per clock-in hours.
 Config.ClockinWebhook = ''
 
+Config.ClockInJobs = {
+    ['police'] = 'https://discord.com/api/webhooks/1115704820137996338/xBu-iSlFhebSHFKP1IILq5UWouxhAYo-kV--1V66xPiOPbnd342duU1wgzEeowJjtXdn',
+    ['ems'] = '',
+    ['doctor'] = '',
+    ['fire'] = ''
+}
+
 -- If set to true = Fine gets automatically removed from bank automatically charging the player.
 -- If set to false = The fine gets sent as an Invoice to their phone and it us to the player to pay for it, can remain unpaid and ignored.
 Config.BillVariation = true
