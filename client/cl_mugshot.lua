@@ -208,6 +208,7 @@ RegisterNUICallback("sendToJail", function(data, cb)
         end
         Citizen.Wait(5000)
         -- Uses qb-policejob JailPlayer event
-        TriggerServerEvent("police:server:JailPlayer", targetSourceId, sentence)
+        -- TriggerServerEvent("police:server:JailPlayer", targetSourceId, sentence)
+        exports.pickle_prisons:JailPlayer(targetSourceId, sentence, "default")
     end
 end)
