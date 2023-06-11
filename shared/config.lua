@@ -25,6 +25,10 @@ Config.ClockInJobs = {
 -- If set to false = The fine gets sent as an Invoice to their phone and it us to the player to pay for it, can remain unpaid and ignored.
 Config.BillVariation = true
 
+-- If set to false (default) = The fine amount is just being removed from the player's bank account
+-- If set to true = The fine amount is beeing added to the society account after being removed from the player's bank account
+Config.QBManagementUse = false
+
 -- Set up your inventory to automatically retrieve images when a weapon is registered at a weapon shop or self-registered.
 -- If you're utilizing lj-inventory's latest version from GitHub, no further modifications are necessary. 
 -- However, if you're using a different inventory system, please refer to the "Inventory Edit | Automatic Add Weapons with images" section in ps-mdt's README.
@@ -93,11 +97,93 @@ Config.ImpoundLocations = {
 
 Config.UseWolfknightRadar = false
 Config.WolfknightNotifyTime = 5000 -- How long the notification displays for in milliseconds (30000 = 30 seconds)
+Config.PlateScanForDriversLicense = false -- If true, plate scanner will check if the owner of the scanned vehicle has a drivers license
 
 -- IMPORTANT: To avoid making excessive database queries, modify this config to true 'CONFIG.use_sonorancad = true' setting in the configuration file located at 'wk_wars2x/config.lua'. 
 -- Enabling this setting will limit plate checks to only those vehicles that have been used by a player.
 
 Config.LogPerms = {
+	['ambulance'] = {
+		[4] = true,
+	},
+	['police'] = {
+		[4] = true,
+	},
+    ['bcso'] = {
+		[4] = true,
+	},
+    ['sast'] = {
+		[4] = true,
+	},
+    ['sasp'] = {
+		[4] = true,
+	},
+    ['sapr'] = {
+		[4] = true,
+	},
+    ['doc'] = {
+		[4] = true,
+	},
+    ['lssd'] = {
+		[4] = true,
+	},
+}
+
+Config.RemoveIncidentPerms = {
+	['ambulance'] = {
+		[4] = true,
+	},
+	['police'] = {
+		[4] = true,
+	},
+    ['bcso'] = {
+		[4] = true,
+	},
+    ['sast'] = {
+		[4] = true,
+	},
+    ['sasp'] = {
+		[4] = true,
+	},
+    ['sapr'] = {
+		[4] = true,
+	},
+    ['doc'] = {
+		[4] = true,
+	},
+    ['lssd'] = {
+		[4] = true,
+	},
+}
+
+Config.RemoveReportPerms = {
+	['ambulance'] = {
+		[4] = true,
+	},
+	['police'] = {
+		[4] = true,
+	},
+    ['bcso'] = {
+		[4] = true,
+	},
+    ['sast'] = {
+		[4] = true,
+	},
+    ['sasp'] = {
+		[4] = true,
+	},
+    ['sapr'] = {
+		[4] = true,
+	},
+    ['doc'] = {
+		[4] = true,
+	},
+    ['lssd'] = {
+		[4] = true,
+	},
+}
+
+Config.RemoveWeaponsPerms = {
 	['ambulance'] = {
 		[4] = true,
 	},

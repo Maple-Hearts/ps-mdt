@@ -90,8 +90,29 @@ function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
 
 var quotes = [
   'Project Sloth On Top!',
-  'A Discord rewrite fixes everything.',
+  'A Discord rewrite fixes everything...',
   'Does anyone even read these?',
+  'The best way to predict your future is to create it.',
+  'Believe you can and you\'re halfway there.',
+  'In three words I can sum up everything I\'ve learned about life: it goes on.',
+  'The only way to do great work is to love what you do.',
+  'Success is not final, failure is not fatal: it is the courage to continue that counts.',
+  'Life is 10% what happens to us and 90% how we react to it.',
+  'The only true wisdom is in knowing you know nothing.',
+  'If you want to live a happy life, tie it to a goal, not to people or things.',
+  'Happiness is not something ready-made. It comes from your own actions.',
+  'The greatest glory in living lies not in never falling, but in rising every time we fall.',
+  'The only thing necessary for the triumph of evil is for good men to do nothing.',
+  'It does not matter how slowly you go as long as you do not stop.',
+  'The best time to plant a tree was 20 years ago. The second best time is now.',
+  'Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.',
+  'Don\'t watch the clock; do what it does. Keep going.',
+  'You miss 100% of the shots you don\'t take.',
+  'You can\'t go back and change the beginning, but you can start where you are and change the ending.',
+  'It\'s not the years in your life that count. It\'s the life in your years.',
+  'The greatest glory in living lies not in never falling, but in rising every time we fall.',
+  'The two most important days in your life are the day you are born and the day you find out why.',
+  'Success is not how high you have climbed, but how you make a positive difference to the world.',
 ]
 
 function randomizeQuote() {
@@ -752,6 +773,8 @@ $(document).ready(() => {
           <p><em>[Insert Report Summary Here]</em></p>
           <p>&nbsp;</p>
           <p><strong>🧍 Hostage:</strong> [Name Here]</p>
+          <p>&nbsp;</p>
+          <p><strong>🗄️ Evidence Location:</strong> Stash # | Drawer #</p>
           <p>&nbsp;</p>
           <p><strong>🔪 Weapons/Items Confiscated:</strong></p>
           <p><em>· [Insert List Here]</em></p>
@@ -2052,6 +2075,7 @@ $(document).ready(() => {
                     <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">Processed</div>
                     <div class="associated-incidents-user-tag red-tag" data-id="${$(this).data("cid")}">Associated</div>
                 </div>
+                <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> Right click below to add and/or modify charges.</div>
                 <div class="associated-incidents-user-holder" data-name="${$(this).data("cid")}"></div>
                 <div class="manage-incidents-title-tag" data-id="${$(this).data("cid")}">Recommended Fine</div>
                 <div class="associated-incidents-fine-input" data-id="${$(this).data("cid")}"><img src="img/h7S5f9J.webp"> <input disabled placeholder="0" class="fine-recommended-amount" id="fine-recommended-amount" data-id="${$(this).data("cid")}" type="number"></div>
@@ -4520,12 +4544,11 @@ window.addEventListener("message", function (event) {
         $(".close-all").css("filter", "brightness(15%)");
         $(".dispatch-attached-units-holder").empty();
         $.each(table, function (index, value) {
-          $(
-            ".dispatch-attached-units-holder"
-          ).prepend(`<div class="dispatch-attached-unit-item" data-id="${value.cid}">
-                        <div class="unit-job unit-police">${value.job}</div>
+          $(".dispatch-attached-units-holder").prepend(
+            `<div class="dispatch-attached-unit-item" data-id="${value.cid}">
+                        <div class="unit-job active-info-job-${value.job}">${value.job}</div>
                         <div class="unit-name">(${value.callsign}) ${value.fullname}</div>
-                        <div class="unit-radio">1</div>
+                        <div class="unit-radio">${value.channel}</div> 
                     </div> `);
         });
         setTimeout(() => {
@@ -4870,6 +4893,7 @@ window.addEventListener("message", function (event) {
                   <div class="associated-incidents-user-tag ${processedTag}" data-id="${cid}">Processed</div>
                   <div class="associated-incidents-user-tag ${associatedTag}" data-id="${cid}">Associated</div>
               </div>
+              <div class="modify-charges-label"><span class="fas fa-solid fa-info"></span> Right click below to add and/or modify charges.</div>
               ${associatedIncidentsContainer}
           </div>`
         );
@@ -5754,7 +5778,7 @@ center: [0, -1024],
 maxBoundsViscosity: 1.0
 });
 
-var customImageUrl = 'https://i1.lensdump.com/i/gj7atT.png';
+var customImageUrl = 'https://i.imgur.com/EdOZjzF.jpg';
 
 var sw = map.unproject([0, 1024], 3 - 1);
 var ne = map.unproject([1024, 0], 3 - 1);
