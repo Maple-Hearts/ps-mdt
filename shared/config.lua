@@ -8,17 +8,17 @@ Config.UseCQCMugshot = true
 Config.MugPhotos = 1
 
 -- Images for mug shots will be uploaded here. Add a Discord webhook. 
-Config.MugShotWebhook = ''
+Config.MugShotWebhook = 'https://discord.com/api/webhooks/1087639365854965831/3tS_T5Vfj9VzY3o6gYjikUu48drfbQVnaUFwMX0BHSakYX_wiwmrol5Yp0bIPLhwgSaC'
 
 -- Clock-in notifications for duty. Add a Discord webhook.
 -- Command /mdtleaderboard, will display top players per clock-in hours.
-Config.ClockinWebhook = ''
+Config.ClockinWebhook = 'https://discord.com/api/webhooks/1117414356234289222/POMf6O8UoVxFDkaywLsaxyDP_Yh8pMmDlQ3XzYPfR9Jr7UoTHXEIZb8oYicGbBFkQhAI'
 
 Config.ClockInJobs = {
     ['police'] = 'https://discord.com/api/webhooks/1115704820137996338/xBu-iSlFhebSHFKP1IILq5UWouxhAYo-kV--1V66xPiOPbnd342duU1wgzEeowJjtXdn',
-    ['ems'] = '',
-    ['doctor'] = '',
-    ['fire'] = ''
+    ['ems'] = 'https://discord.com/api/webhooks/1086722425623945266/3eZXJ7GZQgta4vpg_iSJht1dyN0P8f-nXD4EFAgmIuuYNyjmcc03MBVYbKhq97jpEBZE',
+    ['doctor'] = 'https://discord.com/api/webhooks/1117414596521771008/C0v5duBS0seUjnm_j5E18vb9xvwuezicMxrxbvVnsEHav5fp7QAitNmgED4oyy9Froly',
+    ['fire'] = 'https://discord.com/api/webhooks/1117414643195986010/KuZReQTPgVguHJ0heZ2W04YVmNUnWwwwik58FdSe0yRcufyPv1tatoW1LOjTXAqXwF41'
 }
 
 -- If set to true = Fine gets automatically removed from bank automatically charging the player.
@@ -27,7 +27,7 @@ Config.BillVariation = true
 
 -- If set to false (default) = The fine amount is just being removed from the player's bank account
 -- If set to true = The fine amount is beeing added to the society account after being removed from the player's bank account
-Config.QBManagementUse = false
+Config.QBManagementUse = true
 
 -- Set up your inventory to automatically retrieve images when a weapon is registered at a weapon shop or self-registered.
 -- If you're utilizing lj-inventory's latest version from GitHub, no further modifications are necessary. 
@@ -77,7 +77,9 @@ Config.PoliceJobs = {
 
 Config.AmbulanceJobs = {
     ['ambulance'] = true,
-    ['doctor'] = true
+    ['doctor'] = true,
+    ['ems'] = true,
+    ['fire'] = true
 }
 
 Config.DojJobs = {
@@ -95,19 +97,25 @@ Config.ImpoundLocations = {
 
 -- Support for Wraith ARS 2X. 
 
-Config.UseWolfknightRadar = false
+Config.UseWolfknightRadar = true
 Config.WolfknightNotifyTime = 5000 -- How long the notification displays for in milliseconds (30000 = 30 seconds)
-Config.PlateScanForDriversLicense = false -- If true, plate scanner will check if the owner of the scanned vehicle has a drivers license
+Config.PlateScanForDriversLicense = true -- If true, plate scanner will check if the owner of the scanned vehicle has a drivers license
 
 -- IMPORTANT: To avoid making excessive database queries, modify this config to true 'CONFIG.use_sonorancad = true' setting in the configuration file located at 'wk_wars2x/config.lua'. 
 -- Enabling this setting will limit plate checks to only those vehicles that have been used by a player.
 
 Config.LogPerms = {
-	['ambulance'] = {
+	['ems'] = {
+		[5] = true,
+	},
+	['doctor'] = {
 		[4] = true,
 	},
+	['fire'] = {
+		[5] = true,
+	},
 	['police'] = {
-		[4] = true,
+		[11] = true,
 	},
     ['bcso'] = {
 		[4] = true,
@@ -130,11 +138,17 @@ Config.LogPerms = {
 }
 
 Config.RemoveIncidentPerms = {
-	['ambulance'] = {
+	['ems'] = {
+		[5] = true,
+	},
+	['doctor'] = {
 		[4] = true,
 	},
+	['fire'] = {
+		[5] = true,
+	},
 	['police'] = {
-		[4] = true,
+		[11] = true,
 	},
     ['bcso'] = {
 		[4] = true,
@@ -157,11 +171,17 @@ Config.RemoveIncidentPerms = {
 }
 
 Config.RemoveReportPerms = {
-	['ambulance'] = {
+	['ems'] = {
+		[5] = true,
+	},
+	['doctor'] = {
 		[4] = true,
 	},
+	['fire'] = {
+		[5] = true,
+	},
 	['police'] = {
-		[4] = true,
+		[11] = true,
 	},
     ['bcso'] = {
 		[4] = true,
@@ -184,11 +204,17 @@ Config.RemoveReportPerms = {
 }
 
 Config.RemoveWeaponsPerms = {
-	['ambulance'] = {
-		[4] = true,
+	['ems'] = {
+		[9] = true,
+	},
+	['doctor'] = {
+		[9] = true,
+	},
+	['fire'] = {
+		[9] = true,
 	},
 	['police'] = {
-		[4] = true,
+		[12] = true,
 	},
     ['bcso'] = {
 		[4] = true,
@@ -789,9 +815,9 @@ Config.ClassList = {
 
 function GetJobType(job)
 	if Config.PoliceJobs[job] then
-		return 'police'
+		return 'leo'
 	elseif Config.AmbulanceJobs[job] then
-		return 'ambulance'
+		return 'samr'
 	elseif Config.DojJobs[job] then
 		return 'doj'
 	else

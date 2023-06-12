@@ -44,6 +44,9 @@ const PoliceJobs = {
 
 const AmbulanceJobs = {
   ['ambulance']: true,
+  ['ems']: true,
+  ['fire']: true,
+  ['doctor']: true,
 }
 
 const DojJobs = {
@@ -3939,18 +3942,18 @@ $(document).ready(() => {
       name: "DEPARTMENT OF CORRECTIONS",
     },
     ambulance: {
-      color1: "#5F2121",
-      color2: "#7B2C2C",
-      color3: "#4A1C1C",
-      color4: "#5E2323",
-      color5: "#381515",
-      color6: "#2C1212",
-      color7: "#521C1C",
-      color8: "#CC2525",
-      color9: "#8A8D91",
+      color1: "#2F0D34",
+      color2: "#6F2C7B",
+      color3: "#411C4A",
+      color4: "#4E235E",
+      color5: "#2C1538",
+      color6: "#27122C",
+      color7: "#431C52",
+      color8: "#9925CC",
+      color9: "#FFFFFF",
       color10: "#444444",
-      image: "img/ems_badge.webp",
-      name: "PILLBOX HILL MEDICAL CENTER",
+      image: "https://shares.itzdabbzz.me/2023/03/13/4HYK",
+      name: "ECLIPSE MEDICAL CENTER",
     },
     doj: {
       color1: "#553a1e",
@@ -4282,8 +4285,16 @@ window.addEventListener("message", function (event) {
             activeInfoJob = `<div class="unit-job active-info-job-doc">DOC</div>`;
           }
         } else if (AmbulanceJobs[unit.unitType] !== undefined) {
-          activeInfoJob = `<div class="unit-job active-info-job-ambulance">Ambulance</div>`
-          emsCount++;
+          if(unit.Type == "ems") {
+            activeInfoJob = `<div class="unit-job active-info-job-ambulance">EMS</div>`
+            emsCount++;
+          }else if(unit.Type == "doctor") {
+            activeInfoJob = `<div class="unit-job active-info-job-ambulance">DOCTOR</div>`
+            emsCount++;
+          }else if(unit.Type == "fire") {
+            activeInfoJob = `<div class="unit-job active-info-job-ambulance">FIRE</div>`
+            emsCount++;
+          }
         } else if (DojJobs[unit.unitType] !== undefined) {
           activeInfoJob = `<div class="unit-job active-info-job-doj">DOJ</div>`
           dojCount++;
